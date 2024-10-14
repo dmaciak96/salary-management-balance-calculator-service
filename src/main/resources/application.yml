@@ -1,0 +1,29 @@
+server:
+  port: 9200
+
+eureka:
+  client:
+    service-url:
+      host: ${EUREKA_HOST:localhost}
+      port: ${EUREKA_PORT:8761}
+      defaultZone: http://${eureka.client.service-url.host}:${eureka.client.service-url.port}/eureka/
+
+management:
+  server:
+    port: 9201
+  endpoints:
+    web:
+      exposure:
+        include: "health,info"
+
+spring:
+  application:
+    name: balance-calculator-service
+  threads:
+    virtual:
+      enabled: true
+
+logging:
+  file:
+    path: ./logs
+    name: ${spring.application.name}
