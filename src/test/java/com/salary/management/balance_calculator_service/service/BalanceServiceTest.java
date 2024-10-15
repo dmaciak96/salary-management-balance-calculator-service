@@ -6,6 +6,10 @@ import com.salary.management.balance_calculator_service.model.BalanceGroupMember
 import com.salary.management.balance_calculator_service.model.ExpenseDto;
 import com.salary.management.balance_calculator_service.model.types.BalanceType;
 import com.salary.management.balance_calculator_service.model.types.SplitType;
+import com.salary.management.balance_calculator_service.service.calculator.FullAmountNeedToPayBalanceCalculator;
+import com.salary.management.balance_calculator_service.service.calculator.FullAmountPaidBalanceCalculator;
+import com.salary.management.balance_calculator_service.service.calculator.SplitAmountNeedToPayBalanceCalculator;
+import com.salary.management.balance_calculator_service.service.calculator.SplitAmountPaidBalanceCalculator;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -29,8 +33,13 @@ public class BalanceServiceTest {
 
     public BalanceServiceTest() {
         this.inventoryServiceClientMock = mock(InventoryServiceClient.class);
+        var balanceCalculators = List.of(
+                new FullAmountNeedToPayBalanceCalculator(),
+                new FullAmountPaidBalanceCalculator(),
+                new SplitAmountNeedToPayBalanceCalculator(),
+                new SplitAmountPaidBalanceCalculator());
         this.balanceService = new BalanceServiceImpl(inventoryServiceClientMock,
-                Executors.newVirtualThreadPerTaskExecutor());
+                Executors.newVirtualThreadPerTaskExecutor(), balanceCalculators);
     }
 
     @Test
