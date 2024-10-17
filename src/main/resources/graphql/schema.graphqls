@@ -1,0 +1,10 @@
+type Query {
+    calculateBalanceByBalanceGroupAndUserId(balanceGroupId: ID, userId: ID): Balance
+}
+
+type Balance {
+    userId : ID
+    balanceGroupId : ID
+    amount : String
+    balanceType : String
+}
