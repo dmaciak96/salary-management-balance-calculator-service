@@ -286,6 +286,35 @@ public class BalanceServiceTest {
         assertEquals(new BalanceDto(USER_TWO, BALANCE_GROUP_ID, new BigDecimal("10.00"), BalanceType.Minus), resultForUserTwo);
     }
 
+    @Test
+    void simpleTestForTwoUsersAndTwoExpenses() {
+        when(inventoryServiceClientMock.findAllBalanceGroupMembers(BALANCE_GROUP_ID))
+                .thenReturn(createTwoMembers());
+
+        when(inventoryServiceClientMock.findAllExpensesFromBalanceGroup(BALANCE_GROUP_ID))
+                .thenReturn(List.of(ExpenseDto.builder()
+                                .name("test expense 1")
+                                .resolved(false)
+                                .paidByUserId(USER_ONE)
+                                .splitType(SplitType.SplitBetweenGroupMembers)
+                                .amount(BigDecimal.valueOf(100.0))
+                                .build(),
+                        ExpenseDto.builder()
+                                .name("test expense 2")
+                                .resolved(false)
+                                .paidByUserId(USER_TWO)
+                                .splitType(SplitType.SplitBetweenGroupMembers)
+                                .amount(BigDecimal.valueOf(50.0))
+                                .build()
+                ));
+
+        var resultForUserOne = balanceService.calculateBalance(USER_ONE, BALANCE_GROUP_ID);
+        var resultForUserTwo = balanceService.calculateBalance(USER_TWO, BALANCE_GROUP_ID);
+
+        assertEquals(new BalanceDto(USER_ONE, BALANCE_GROUP_ID, new BigDecimal("25.00"), BalanceType.Plus), resultForUserOne);
+        assertEquals(new BalanceDto(USER_TWO, BALANCE_GROUP_ID, new BigDecimal("25.00"), BalanceType.Minus), resultForUserTwo);
+    }
+
     private List<BalanceGroupMemberDto> createTwoMembers() {
         return List.of(BalanceGroupMemberDto.builder()
                         .id(USER_ONE)
