@@ -18,5 +18,5 @@ public interface InventoryServiceClient {
     List<ExpenseDto> findAllExpensesFromBalanceGroup(@PathVariable UUID balanceGroupId);
 
     @GetMapping("/api/balance-groups/{balanceGroupId}/members")
-    List<BalanceGroupMemberDto> findAllBalanceGroupMembers(@PathVariable UUID balanceGroupId);
+    List<BalanceGroupMemberDto> findAllGroupMembersFromBalanceGroup(@PathVariable UUID balanceGroupId);
 }

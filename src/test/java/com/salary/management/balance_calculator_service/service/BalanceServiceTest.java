@@ -44,7 +44,7 @@ public class BalanceServiceTest {
 
     @Test
     void shouldCalculateBalanceForSingleExpenseAndTwoMembers() {
-        when(inventoryServiceClientMock.findAllBalanceGroupMembers(BALANCE_GROUP_ID))
+        when(inventoryServiceClientMock.findAllGroupMembersFromBalanceGroup(BALANCE_GROUP_ID))
                 .thenReturn(createTwoMembers());
         when(inventoryServiceClientMock.findAllExpensesFromBalanceGroup(BALANCE_GROUP_ID))
                 .thenReturn(List.of(ExpenseDto.builder()
@@ -64,7 +64,7 @@ public class BalanceServiceTest {
 
     @Test
     void shouldCalculateBalanceForSingleExpenseAndFourMembers() {
-        when(inventoryServiceClientMock.findAllBalanceGroupMembers(BALANCE_GROUP_ID))
+        when(inventoryServiceClientMock.findAllGroupMembersFromBalanceGroup(BALANCE_GROUP_ID))
                 .thenReturn(createFourMembers());
         when(inventoryServiceClientMock.findAllExpensesFromBalanceGroup(BALANCE_GROUP_ID))
                 .thenReturn(List.of(ExpenseDto.builder()
@@ -88,7 +88,7 @@ public class BalanceServiceTest {
 
     @Test
     void shouldCalculateBalanceForThreeExpenseAndTwoMembers() {
-        when(inventoryServiceClientMock.findAllBalanceGroupMembers(BALANCE_GROUP_ID))
+        when(inventoryServiceClientMock.findAllGroupMembersFromBalanceGroup(BALANCE_GROUP_ID))
                 .thenReturn(createTwoMembers());
         when(inventoryServiceClientMock.findAllExpensesFromBalanceGroup(BALANCE_GROUP_ID))
                 .thenReturn(List.of(ExpenseDto.builder()
@@ -122,7 +122,7 @@ public class BalanceServiceTest {
 
     @Test
     void shouldCalculateBalanceForThreeExpenseAndFourMembers() {
-        when(inventoryServiceClientMock.findAllBalanceGroupMembers(BALANCE_GROUP_ID))
+        when(inventoryServiceClientMock.findAllGroupMembersFromBalanceGroup(BALANCE_GROUP_ID))
                 .thenReturn(createFourMembers());
 
         when(inventoryServiceClientMock.findAllExpensesFromBalanceGroup(BALANCE_GROUP_ID))
@@ -161,7 +161,7 @@ public class BalanceServiceTest {
 
     @Test
     void shouldCalculateBalanceForThreeExpenseWithSplitAndFullOwnAndTwoMembers() {
-        when(inventoryServiceClientMock.findAllBalanceGroupMembers(BALANCE_GROUP_ID))
+        when(inventoryServiceClientMock.findAllGroupMembersFromBalanceGroup(BALANCE_GROUP_ID))
                 .thenReturn(createTwoMembers());
 
         when(inventoryServiceClientMock.findAllExpensesFromBalanceGroup(BALANCE_GROUP_ID))
@@ -197,7 +197,7 @@ public class BalanceServiceTest {
 
     @Test
     void shouldCalculateBalanceForThreeExpensesAndOneMember() {
-        when(inventoryServiceClientMock.findAllBalanceGroupMembers(BALANCE_GROUP_ID))
+        when(inventoryServiceClientMock.findAllGroupMembersFromBalanceGroup(BALANCE_GROUP_ID))
                 .thenReturn(List.of(BalanceGroupMemberDto.builder()
                         .id(USER_ONE)
                         .build()));
@@ -232,7 +232,7 @@ public class BalanceServiceTest {
 
     @Test
     void shouldCalculateBalanceForEmptyExpensesAndOneMember() {
-        when(inventoryServiceClientMock.findAllBalanceGroupMembers(BALANCE_GROUP_ID))
+        when(inventoryServiceClientMock.findAllGroupMembersFromBalanceGroup(BALANCE_GROUP_ID))
                 .thenReturn(List.of(BalanceGroupMemberDto.builder()
                         .id(USER_ONE)
                         .build()));
@@ -246,7 +246,7 @@ public class BalanceServiceTest {
 
     @Test
     void shouldCalculateBalanceForEmptyExpensesAndTwoMember() {
-        when(inventoryServiceClientMock.findAllBalanceGroupMembers(BALANCE_GROUP_ID))
+        when(inventoryServiceClientMock.findAllGroupMembersFromBalanceGroup(BALANCE_GROUP_ID))
                 .thenReturn(createTwoMembers());
         when(inventoryServiceClientMock.findAllExpensesFromBalanceGroup(BALANCE_GROUP_ID))
                 .thenReturn(List.of());
@@ -260,7 +260,7 @@ public class BalanceServiceTest {
 
     @Test
     void shouldSkipResolvedExpenses() {
-        when(inventoryServiceClientMock.findAllBalanceGroupMembers(BALANCE_GROUP_ID))
+        when(inventoryServiceClientMock.findAllGroupMembersFromBalanceGroup(BALANCE_GROUP_ID))
                 .thenReturn(createTwoMembers());
 
         when(inventoryServiceClientMock.findAllExpensesFromBalanceGroup(BALANCE_GROUP_ID))
@@ -288,7 +288,7 @@ public class BalanceServiceTest {
 
     @Test
     void simpleTestForTwoUsersAndTwoExpenses() {
-        when(inventoryServiceClientMock.findAllBalanceGroupMembers(BALANCE_GROUP_ID))
+        when(inventoryServiceClientMock.findAllGroupMembersFromBalanceGroup(BALANCE_GROUP_ID))
                 .thenReturn(createTwoMembers());
 
         when(inventoryServiceClientMock.findAllExpensesFromBalanceGroup(BALANCE_GROUP_ID))
