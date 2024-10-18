@@ -19,7 +19,7 @@ public class InventoryServiceFallback implements InventoryServiceClient {
     }
 
     @Override
-    public List<BalanceGroupMemberDto> findAllGroupMembersFromBalanceGroup(UUID balanceGroupId) {
+    public List<BalanceGroupMemberDto> findAllBalanceGroupMembers(UUID balanceGroupId) {
         log.warn("Fallback was invoke for GET /members from inventory service");
         return List.of();
     }

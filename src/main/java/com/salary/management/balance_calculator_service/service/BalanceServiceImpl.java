@@ -32,7 +32,7 @@ public class BalanceServiceImpl implements BalanceService {
         var expensesFuture = CompletableFuture.supplyAsync(() ->
                 inventoryServiceClient.findAllExpensesFromBalanceGroup(balanceGroupId), virtualThreadExecutor);
         var membersFuture = CompletableFuture.supplyAsync(() ->
-                inventoryServiceClient.findAllGroupMembersFromBalanceGroup(balanceGroupId), virtualThreadExecutor);
+                inventoryServiceClient.findAllBalanceGroupMembers(balanceGroupId), virtualThreadExecutor);
 
         var totalAmount = expensesFuture.thenCombine(membersFuture,
                 (expenses, members) -> {
