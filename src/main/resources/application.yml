@@ -23,6 +23,10 @@ spring:
     virtual:
       enabled: true
 
+client:
+  inventoryService:
+    baseUrl: ${INVENTORY_SERVICE_URL:http://localhost:9100/graphql}
+
 logging:
   file:
     path: ./logs
