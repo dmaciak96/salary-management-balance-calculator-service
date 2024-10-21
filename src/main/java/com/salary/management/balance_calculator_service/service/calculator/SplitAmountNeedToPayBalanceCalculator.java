@@ -12,7 +12,7 @@ public class SplitAmountNeedToPayBalanceCalculator implements BalanceCalculator 
 
     @Override
     public boolean isApplicable(UUID balanceGroupMemberId, int balanceGroupMembersCount, ExpenseDto expense) {
-        return expense.getSplitType() == SplitType.SplitBetweenGroupMembers && expense.getPaidByUserId() != balanceGroupMemberId;
+        return expense.getSplitType() == SplitType.SplitBetweenGroupMembers && expense.getPaidByGroupMember().getId() != balanceGroupMemberId;
     }
 
     @Override

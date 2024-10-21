@@ -17,7 +17,7 @@ public class SplitAmountPaidBalanceCalculator implements BalanceCalculator {
     }
 
     private boolean currentUserPaidSplitExpense(ExpenseDto expense, UUID currentUserId) {
-        return expense.getSplitType() == SplitType.SplitBetweenGroupMembers && expense.getPaidByUserId() == currentUserId;
+        return expense.getSplitType() == SplitType.SplitBetweenGroupMembers && expense.getPaidByGroupMember().getId() == currentUserId;
     }
 
     @Override

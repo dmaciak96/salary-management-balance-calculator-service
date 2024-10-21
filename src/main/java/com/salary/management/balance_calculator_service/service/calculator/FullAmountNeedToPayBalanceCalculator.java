@@ -16,7 +16,7 @@ public class FullAmountNeedToPayBalanceCalculator implements BalanceCalculator {
     }
 
     private boolean currentUserNeedToPayFullAmount(ExpenseDto expense, UUID balanceGroupMemberId) {
-        return expense.getSplitType() == SplitType.FullAmountForSingleGroupMember && expense.getNeedToPayUserId() == balanceGroupMemberId;
+        return expense.getSplitType() == SplitType.FullAmountForSingleGroupMember && expense.getPaidByGroupMember().getId() == balanceGroupMemberId;
     }
 
     @Override

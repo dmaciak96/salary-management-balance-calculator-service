@@ -21,6 +21,6 @@ public class FullAmountPaidBalanceCalculator implements BalanceCalculator {
     }
 
     private boolean currentUserPaidFullAmount(UUID balanceGroupMemberId, ExpenseDto expense) {
-        return expense.getSplitType() == SplitType.FullAmountForSingleGroupMember && expense.getPaidByUserId() == balanceGroupMemberId;
+        return expense.getSplitType() == SplitType.FullAmountForSingleGroupMember && expense.getPaidByGroupMember().getId() == balanceGroupMemberId;
     }
 }
