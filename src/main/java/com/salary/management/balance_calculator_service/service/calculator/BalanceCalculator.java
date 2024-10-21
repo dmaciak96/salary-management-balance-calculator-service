@@ -7,9 +7,9 @@ import java.util.UUID;
 
 public interface BalanceCalculator {
 
-    boolean isApplicable(UUID currentUserId, int balanceGroupMembersCount, ExpenseDto expense);
+    boolean isApplicable(UUID balanceGroupMemberId, int balanceGroupMembersCount, ExpenseDto expense);
 
-    BigDecimal calculateBalanceAmount(UUID currentUserId,
+    BigDecimal calculateBalanceAmount(UUID balanceGroupMemberId,
                                       int balanceGroupMembersCount,
                                       ExpenseDto expense);
 }

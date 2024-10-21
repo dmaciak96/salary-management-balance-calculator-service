@@ -1,5 +1,7 @@
 server:
   port: 9200
+  servlet:
+    context-path: /api
 
 eureka:
   client:
@@ -22,10 +24,6 @@ spring:
   threads:
     virtual:
       enabled: true
-
-client:
-  inventoryService:
-    baseUrl: ${INVENTORY_SERVICE_URL:http://localhost:9100/graphql}
 
 logging:
   file:

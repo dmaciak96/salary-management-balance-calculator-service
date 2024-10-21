@@ -11,16 +11,16 @@ import java.util.UUID;
 public class FullAmountPaidBalanceCalculator implements BalanceCalculator {
 
     @Override
-    public boolean isApplicable(UUID currentUserId, int balanceGroupMembersCount, ExpenseDto expense) {
-        return currentUserPaidFullAmount(currentUserId, expense);
+    public boolean isApplicable(UUID balanceGroupMemberId, int balanceGroupMembersCount, ExpenseDto expense) {
+        return currentUserPaidFullAmount(balanceGroupMemberId, expense);
     }
 
     @Override
-    public BigDecimal calculateBalanceAmount(UUID currentUserId, int balanceGroupMembersCount, ExpenseDto expense) {
+    public BigDecimal calculateBalanceAmount(UUID balanceGroupMemberId, int balanceGroupMembersCount, ExpenseDto expense) {
         return expense.getAmount();
     }
 
-    private boolean currentUserPaidFullAmount(UUID currentUserId, ExpenseDto expense) {
-        return expense.getSplitType() == SplitType.FullAmountForSingleGroupMember && expense.getPaidByUserId() == currentUserId;
+    private boolean currentUserPaidFullAmount(UUID balanceGroupMemberId, ExpenseDto expense) {
+        return expense.getSplitType() == SplitType.FullAmountForSingleGroupMember && expense.getPaidByGroupMember().getId() == balanceGroupMemberId;
     }
 }

@@ -11,12 +11,12 @@ import java.util.UUID;
 public class SplitAmountNeedToPayBalanceCalculator implements BalanceCalculator {
 
     @Override
-    public boolean isApplicable(UUID currentUserId, int balanceGroupMembersCount, ExpenseDto expense) {
-        return expense.getSplitType() == SplitType.SplitBetweenGroupMembers && expense.getPaidByUserId() != currentUserId;
+    public boolean isApplicable(UUID balanceGroupMemberId, int balanceGroupMembersCount, ExpenseDto expense) {
+        return expense.getSplitType() == SplitType.SplitBetweenGroupMembers && expense.getPaidByGroupMember().getId() != balanceGroupMemberId;
     }
 
     @Override
-    public BigDecimal calculateBalanceAmount(UUID currentUserId, int balanceGroupMembersCount, ExpenseDto expense) {
+    public BigDecimal calculateBalanceAmount(UUID balanceGroupMemberId, int balanceGroupMembersCount, ExpenseDto expense) {
         return expense.getAmount().divide(BigDecimal.valueOf(balanceGroupMembersCount)).multiply(BigDecimal.valueOf(-1));
     }
 }

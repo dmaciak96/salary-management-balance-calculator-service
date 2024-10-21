@@ -17,8 +17,8 @@ public class ExpenseDto extends AbstractDto {
 
     private String name;
     private BigDecimal amount;
-    private UUID paidByUserId;
-    private UUID needToPayUserId;
+    private BalanceGroupMemberDto paidByGroupMember;
+    private BalanceGroupMemberDto needToPayGroupMember;
     private SplitType splitType;
     private boolean resolved;
 }

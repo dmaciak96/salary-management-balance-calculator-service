@@ -6,5 +6,5 @@ import java.util.UUID;
 
 public interface BalanceService {
 
-    BalanceDto calculateBalance(UUID userId, UUID balanceGroupId);
+    BalanceDto calculateBalance(UUID balanceMemberGroupId, UUID balanceGroupId);
 }
