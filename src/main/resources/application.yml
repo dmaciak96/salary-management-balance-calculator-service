@@ -27,5 +27,5 @@ spring:
 
 logging:
   file:
-    path: ./logs
+    path: ./logs/${spring.application.name}
     name: ${spring.application.name}
